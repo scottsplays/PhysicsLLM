@@ -20,6 +20,9 @@ class Vector:
     def __len__(self):
         return self.n
 
+    def to_list(self):
+        return self.vals
+
     def __add__(self, v):
         if(self.n != v.n):
             raise ValueError(f"Size Mismatch for Vector Addition: {self.shape} + {v.shape}")
@@ -145,10 +148,15 @@ class Matrix:
         return st
 
     def __getitem__(self, i):
+        if(isinstance(i, tuple)):
+            return self.vectors[i[0]][i[1]]
         return self.vectors[i]
 
     def __len__(self):
         return self.n
+
+    def to_list(self):
+        return [row.to_list() for row in self.vectors]
 
     def transpose(self):
         temp = []
@@ -250,6 +258,18 @@ class Matrix:
                 temp.append(element)
         return Vector(temp)
 
+    def tril(self):
+        temp = []
+        for i in range(self.n):
+            tempRow = []
+            for j in range(self.m):
+                if(j > i):
+                    tempRow.append(float("-infinity"))
+                else:
+                    tempRow.append(self[i][j])
+            temp.append(Vector(tempRow))
+        return Matrix(temp)
+
     def fill(self, num):
         for vector in self.vectors:
             vector.fill(num)
@@ -271,3 +291,24 @@ class Matrix:
         for vector in M:
             temp.append(vector.unbias())
         return Matrix(temp)
+
+def concatenate(matrices):
+    temp = []
+    for j in range(matrices[0].shape[0]):
+        tempRow = []
+        for i in range(len(matrices)):
+            tempRow += matrices[i][j].to_list()
+        temp.append(Vector(tempRow))
+    return Matrix(temp)
+
+V1 = Vector([1, 2])
+V2 = Vector([3, 4])
+V3 = Vector([5, 6])
+V4 = Vector([7, 8])
+
+M1 = Matrix([V1, V2])
+M2 = Matrix([V3, V4])
+
+M3 = concatenate([M1, M2, M1])
+
+## print(M3)

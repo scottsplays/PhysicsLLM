@@ -1,189 +1,92 @@
-# Neural Network from Scratch (PhysicsLLM)
+# PhysicsSLM
 
-A feedforward neural network built from first principles in Python using custom
-`Vector`, `Matrix`, `Layer`, and `Weight` classes. **No PyTorch / TensorFlow /
-scikit-learn for the core model** — only plain Python, NumPy helpers for data,
-and matplotlib for plots.
+A decoder-only Transformer written in Python on a small `Vector` / `Matrix` library. No PyTorch in the model. It is a study model, not a production language model.
 
-This repository is the current, cleaned presentation of the project. An earlier
-summer version lives at
-[scottsplays/neural-network-from-scratch](https://github.com/scottsplays/neural-network-from-scratch).
+The shipped run reads `poc-corpus.txt`: a 32-word vocabulary and template continuation only. It does not answer questions and it does not do math.
 
-**Author:** [Scott Kennedy](https://github.com/scottsplays)  
-**Status:** Educational MLP checkpoint (classification on Iris). Larger goals
-(embeddings + a small physics language model) are planned, but **not** part of
-this release.
+**Streamlit app:** [physicsllm.streamlit.app](https://physicsllm.streamlit.app)
 
----
+![Velocity](Velocity.png)
 
-## Why this project exists
+**Author:** [Scott Kennedy](https://github.com/scottsplays)
 
-This repo shows a full training loop implemented by hand:
-
-- Custom linear algebra (`Vector` / `Matrix`)
-- Dense layers with bias-in-weights
-- Manual forward pass and backpropagation
-- ReLU / linear activations
-- Softmax + cross-entropy for multiclass classification
-- Feature standardization and train/test evaluation
-- Side-by-side PyTorch comparison notebook (Colab)
-
-It is a learning / portfolio project, not a production framework.
-
----
-
-## Quick start
+## Run locally
 
 ```bash
 python -m venv .venv
-# Windows
+```
+
+Windows:
+
+```bash
 .venv\Scripts\activate
-# macOS / Linux
-# source .venv/bin/activate
-
 pip install -r requirements.txt
+streamlit run app.py
 ```
 
-**Train on Iris (flower dataset) and save a loss curve:**
+macOS / Linux:
 
 ```bash
-python examples/train_iris.py
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
 ```
 
-Output image: `assets/iris_loss_curve.png`
+The app loads `physics_slm_run.json` on startup. That file is the recorded training run (weights and the losses measured during the run), so Overview shows those numbers without training again. Checkpoints under `checkpoints/` are local pickles and are not part of the repository.
 
-You can also run the library scripts directly:
+## Deploy to Streamlit Community Cloud
+
+1. Push this repository to GitHub. Include `app.py`, `requirements.txt`, `poc-corpus.txt`, `physics_slm_run.json`, and the Python modules the app imports. Do not add API keys or a Streamlit secrets file.
+2. In [Streamlit Community Cloud](https://share.streamlit.io), create a new app from this repo.
+3. Set the main file to `app.py`. Cloud installs `requirements.txt`. No secrets are required.
+
+## Shipped model
+
+| | |
+| --- | --- |
+| Corpus | `poc-corpus.txt` |
+| Blocks | 3 |
+| Width | 16 |
+| Heads | 4 |
+| Context | 16 |
+| Steps | 1,000 |
+| Learning rate | 0.05 |
+| Seed | 0 |
+
+Training windows are drawn from the first 90% of tokens. Validation loss is the mean cross-entropy of 8 fixed windows in the last 10%, forward only. The uniform baseline shown next to it is `log(32)`.
+
+The position table has 16 rows, one per context position. A training script that allocates `len(corpus)` rows still only reads the first 16 positions.
+
+Pressing **Start training** uses this recipe. **Reset model**, then **Start training**, trains a new model from scratch with the same settings. The numbers on the page are read from the model in memory.
+
+The recorded run, formatted the same way the app formats them:
+
+| | |
+| --- | --- |
+| Parameters | 7,648, counted from the live weight tables |
+| Initial loss | 3.914 |
+| Latest training-window loss | 1.617 |
+| Validation loss (held-out tail) | 1.283, mean of 8 windows |
+| Uniform guess | 3.466 (`log(32)`, shown as 3.47 in the caption) |
+| Window accuracy | 39.0% of positions in the sampled training windows |
+| Elapsed | 4m 52s |
+| Greedy, three words | `force equals` → `mass times acceleration` |
+| Greedy, three words | `gravity pulls` → `the box down` |
+
+To record the run again:
 
 ```bash
-python dataloader.py   # Iris download + train loop
-python model.py        # minimal smoke import / demo model
+python record_physics_slm_run.py
 ```
 
-**PyTorch comparison (Google Colab):** open `PyTorch.ipynb`.
+## What the app shows
 
----
+- **Overview** — live parameter count, the recorded losses, and greedy completions.
+- **Train & Evaluate** — one window per step. The sidebar value is the last window loss. Window accuracy is measured on those training windows and is not a held-out score.
+- **Text Generation** — continues a prompt that is already in the vocabulary. The caption states the temperature used for that continuation.
+- **Architecture Explorer** — activations and attention from a real forward pass.
+- **Code & Component Playground** — the classes in `mathematics.py`, `tensor.py`, and `Transformer.py`. `dataloader.py` is shown as source only, because importing it starts a training run.
 
-## Architecture (this release)
+## Earlier multilayer perceptron
 
-```
-Input (4 Iris features)
-        ↓
-  Dense + ReLU   (8)
-        ↓
-  Dense + ReLU   (8)
-        ↓
-  Dense + linear (3 logits)
-        ↓
-  Softmax → cross-entropy → backprop (δz = p − y) → SGD update
-```
-
-Convention: row-vector matmul \(z = x_b W\) with bias stored as an extra row of \(W\).
-
----
-
-## Core components
-
-| Module | What it does |
-|--------|----------------|
-| `tensor.py` | `Vector` and `Matrix` math, softmax, bias helpers |
-| `layer.py` | `Layer` activations + `Weight` forward/backward |
-| `model.py` | 3-layer MLP, softmax, train loop |
-| `mathematics.py` | Activations, CE / MSE losses and grads |
-| `dataloader.py` | Iris CSV load, one-hot, standardize, train |
-| `visualize.py` | Simple matplotlib helpers |
-| `ARCHITECTURE.md` | Deeper notes on each type + math |
-| `PyTorch.ipynb` | Same Iris task in PyTorch (Colab) |
-| `examples/train_iris.py` | Reproducible Iris run + loss curve export |
-
----
-
-## Building blocks (brief)
-
-### Vector
-1-D array of activations or features. Supports element-wise ops, dot/`@`,
-`softmax`, and the bias trick (`append(1)`).
-
-### Matrix
-2-D array of row vectors. Supports matmul, transpose, and shape checks used by
-dense layers.
-
-### Layer
-A vector of unit activations for one network depth. `forward(weight)` computes
-\(x_b W\), applies the layer activation, and caches intermediates on `Weight`.
-
-### Weight
-Learnable dense connection \(W\) plus activation. Backward uses cached \(x,z,y\)
-to form \(\partial L/\partial W\) and the incoming gradient for the previous layer.
-
-See **[ARCHITECTURE.md](ARCHITECTURE.md)** for formulas.
-
----
-
-## Example results (Iris)
-
-Iris is a classic 3-class flower dataset (setosa / versicolor / virginica) with
-4 numeric features.
-
-- Architecture: `4 → 8 (ReLU) → 8 (ReLU) → 3 (linear) + softmax`
-- Loss: cross-entropy
-- Optimizer: online SGD (`lr ≈ 0.01`)
-- Features: column-wise standardization
-
-Typical runs reach **high train/test accuracy** (often mid–high 90%s depending
-on split/seed). A representative loss curve:
-
-![Iris training loss](assets/iris_loss_curve.png)
-
----
-
-## Design notes
-
-- **No high-level ML frameworks in the core path** — autodiff is explicit.
-- **Softmax + CE** use the combined logit gradient \(p - y\).
-- **Online SGD** updates after every sample (loss curves can wiggle).
-- External deps: `numpy`, `pandas` (Iris CSV), `matplotlib` (plots).
-
----
-
-## Future work (not in this release)
-
-This checkpoint stops at a working from-scratch MLP. Planned directions for
-**PhysicsLLM**:
-
-1. **Token / character embeddings** for text
-2. **Attention** and transformer-style blocks
-3. A **small language model (SLM)** trained on physics texts
-4. Model **save/load**, cleaner package layout, and faster matmul backends
-
-The earlier summer repo focused on regression-style MMSE demos (synthetic + wine).
-This release focuses on multiclass Iris + CE/softmax as a stronger classification
-baseline before sequence modeling.
-
----
-
-## Project structure
-
-```
-.
-├── tensor.py
-├── layer.py
-├── model.py
-├── mathematics.py
-├── dataloader.py
-├── visualize.py
-├── ARCHITECTURE.md
-├── PyTorch.ipynb
-├── examples/
-│   └── train_iris.py
-├── assets/
-│   └── iris_loss_curve.png
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
-
----
-
-## License
-
-MIT License. See [LICENSE](LICENSE).
+`iris_app.py` is the Iris / Wine / Moons demo. `python examples/train_iris.py` trains that model and writes `assets/iris_loss_curve.png`. Those files are separate from PhysicsSLM.

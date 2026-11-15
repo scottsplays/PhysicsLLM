@@ -36,6 +36,9 @@ class Layer:
     def as_list(self):
         return self.neurons.vals
 
+    def to_list(self):
+        return self.neurons.to_list()
+
     def copy(self):
         return Layer(self.neurons.copy())
 
@@ -82,12 +85,32 @@ class Weight:
         self.activation_function = activation_function
         self.bias = bias
 
+    @property
+    def n(self):
+        return self.weight_matrix.shape[0]
+
+    @property
+    def m(self):
+        return self.weight_matrix.shape[1]
+
+    def transpose(self):
+        return self.weight_matrix.transpose()
+
+    def __matmul__(self, x):
+        return self.weight_matrix @ x
+
+    def __getitem__(self, key):
+        return self.weight_matrix[key]
+
     def save_layers(self, x, z, y):
         self.x = x ## previous layer
         self.xb = x.bias() ## biased prev layer
 
         self.z = z ## before activation
         self.y = y ## after activation
+
+    def forward(self, x):
+        return Layer(self.weight_matrix @ x)
 
     def backward(self, dy, lr):
         d_activation = mathematics.derivative(self.activation_function)

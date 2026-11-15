@@ -28,3 +28,6 @@ test_frames.gif
 *.pkl
 *.json
 !requirements.txt
+!physics_slm_run.json
+checkpoints/
+.streamlit/secrets.toml

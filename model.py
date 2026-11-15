@@ -31,7 +31,8 @@ class Model:
 
         return loss.value
 
-    def train(self, X_train, y_train, num_epochs = 100, lr = 0.01, visualize = False):
+    def train(self, X_train, y_train, num_epochs = 100, lr = 0.01, visualize = False, on_epoch = None):
+        """Train with existing online SGD; return losses and optionally report epochs."""
         epochs, losses = [], []
         for epoch in range(num_epochs):
             net_loss = 0
@@ -43,13 +44,17 @@ class Model:
             epochs.append(epoch)
             losses.append(avg_loss)
 
+            if on_epoch is not None:
+                on_epoch(epoch + 1, float(avg_loss))
+
             if((epoch + 1) % 10 == 0):
                 print(f"Epoch {epoch + 1}: Loss = {avg_loss}")
         if(visualize):
             plot(epochs, losses, "Epochs", "Losses", "Training Loss over Time")
+        return losses
 
 
-data = Matrix(50, 2)
-targets = Matrix(50, 2)
-
-model = Model(2, 16, 2)
+if __name__ == "__main__":
+    data = Matrix(50, 2)
+    targets = Matrix(50, 2)
+    model = Model(2, 16, 2)

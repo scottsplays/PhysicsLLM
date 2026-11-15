@@ -1,42 +1,5 @@
 import numpy as np
 
-class Variable:
-
-    def __init__(self, value = None):
-        self.value = value
-
-    def __str__(self):
-        return str(self.value)
-
-    def __add__(self, x):
-        return Variable(self.value + x.value)
-
-    def __sub__(self, x):
-        return Variable(self.value - x.value)
-
-    def __mul__(self, x):
-        return Variable(self.value * x.value)
-
-    def __eq__(self, v):
-        self.value = v
-
-class Expression:
-
-    def __init__(self, exp):
-        self.str = exp
-        self.exp = self.parser(exp)
-        self.variables = []
-
-    def parser(self, s):
-        s = s.replace(" ", "")
-        operations = ['(', ')', '^', '*', '/', '+', '-']
-        for c in s:
-            if(int(c)):
-                print("Yes")
-
-    def __str__(self):
-        return
-
 def random():
     return np.random.random()
 
@@ -45,6 +8,27 @@ def random_list(n):
     for _ in range(n):
         temp.append(random())
     return temp
+
+def random_int(a, b):
+    r = random()
+    return int(a + (b - a + 1) * r)
+
+def random_ints(n, a, b):
+    temp = []
+    for _ in range(n):
+        r = random()
+        temp.append(int(a + (b - a + 1) * r))
+    return temp
+
+def mean(x):
+    return sum(x) / len(x)
+
+def var(x):
+    total = 0
+    mu = mean(x)
+    for val in x:
+        total += (val - mu) ** 2
+    return total / len(x)
 
 def linear(x):
     return x
@@ -60,6 +44,25 @@ def relu(x):
 
 def drelu(x):
     return 0 if x < 0 else 1
+
+def log(x):
+    return np.log(x)
+
+def dlog(x):
+    return 1 / x
+
+def sin(x):
+    return np.sin(x)
+
+def cos(x):
+    return np.cos(x)
+
+def softmax(vec):
+    exponential = []
+    max_elem = max(vec)
+    for x in vec:
+        exponential.append(np.exp(x - max_elem))
+    return exponential / sum(exponential)
 
 def derivative(function):
     if(function == linear):
