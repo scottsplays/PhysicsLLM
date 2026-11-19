@@ -31,3 +31,15 @@ test_frames.gif
 !physics_slm_run.json
 checkpoints/
 .streamlit/secrets.toml
+
+# Physics tutor: keys and copyrighted test material stay local
+key_check.txt
+WORKBOOK*.pdf
+evaluation/mcq_workbook.csv
+evaluation/results_mcq.csv
+evaluation/raw/mcq.jsonl
+
+# Colab evaluation
+colab_bundle.zip
+open_model_results.zip
+evaluation/raw/mcq_*.jsonl

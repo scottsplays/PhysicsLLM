@@ -1,0 +1,26 @@
+id,category,subject,query,expected_behavior,expected_answer
+1,common,Mechanics,A 2.0 kg block is pulled across a level floor by a 10 N horizontal force against 4.0 N of kinetic friction. What is its acceleration?,"Knowns/unknown/principle (Newton's 2nd law, F_net = 10 - 4 N), setup, result with units.",a = 3.0 m/s^2
+2,common,Mechanics,I throw a ball straight up at 15 m/s. How high does it go?,Uses v^2 = v0^2 - 2g*h with v = 0 at the top; g = 9.8 m/s^2.,h ≈ 11.5 m
+3,common,Mechanics,What's the difference between speed and velocity?,Speed is a scalar magnitude; velocity is a vector with direction; average speed vs magnitude of average velocity can differ.,Conceptual; vector vs scalar
+4,common,Mechanics,A 1200 kg car moving at 20 m/s brakes to a stop. How much work does friction do on it?,Work-energy theorem; work is negative.,W = -2.4 x 10^5 J
+5,common,E&M,"Two point charges, +3.0 μC and -5.0 μC, are 0.20 m apart. What force does each exert on the other?",Coulomb's law with k = 8.99 x 10^9 N·m^2/C^2; states attractive.,"F ≈ 3.4 N, attractive"
+6,common,E&M,A 6 Ω and a 3 Ω resistor are connected in parallel across a 12 V battery. What's the equivalent resistance and the total current?,1/R = 1/6 + 1/3; I = V/R.,"R_eq = 2 Ω, I = 6 A"
+7,common,Mechanics,"A 0.50 kg cart moving at 4.0 m/s hits and sticks to a 1.5 kg cart at rest. What's their speed afterward, and is kinetic energy conserved?",Momentum conservation for a perfectly inelastic collision; KE drops from 4.0 J to 1.0 J.,v = 1.0 m/s; KE not conserved (3.0 J lost)
+8,common,E&M,A proton moves at 2.0 x 10^6 m/s perpendicular to a 0.50 T magnetic field. What is the radius of its path?,r = mv/(qB).,r ≈ 4.2 cm
+9,common,E&M,What is the capacitance of an air-filled parallel-plate capacitor with plates of area 0.010 m^2 separated by 1.0 mm?,C = ε0 A / d.,C ≈ 8.9 x 10^-11 F (88.5 pF)
+10,common,Mechanics,What is the period of a simple pendulum 1.0 m long?,T = 2π sqrt(L/g); small-angle assumption mentioned.,T ≈ 2.0 s
+11,needs_notes,Mechanics,"According to the textbook, why isn't the normal force always equal to mg?","Normal force is whatever the surface supplies perpendicular to it; differs on inclines (mg cos θ), with other vertical forces, or accelerating frames. Cites retrieved section.",Grounded explanation with citation
+12,needs_notes,E&M,"What does Gauss's law say, and when is it actually useful for finding the electric field?","Flux through closed surface = Q_enc/ε0; useful with spherical, cylindrical, or planar symmetry. Cites retrieved section.",Grounded explanation with citation
+13,needs_notes,Mechanics,How does the textbook define a conservative force?,Work independent of path / zero around closed path; has a potential energy. Cites retrieved section.,Grounded definition with citation
+14,needs_notes,E&M,State Lenz's law and explain what the minus sign in Faraday's law means.,Induced emf opposes the change in flux; minus sign encodes the direction. Cites retrieved section.,Grounded explanation with citation
+15,ambiguous,Mechanics,How hard do I have to push the box?,"Asks for mass, friction coefficient, surface, and goal (start moving / constant speed / given acceleration). Does not invent numbers.",Asks for missing information
+16,ambiguous,E&M,What's the field of a wire?,"Clarifies electric vs magnetic field (and straight/infinite); may give both: E = λ/(2π ε0 r), B = μ0 I/(2π r).",Clarifies or covers both
+17,ambiguous,Mechanics,Is energy conserved in a collision?,Total energy yes; kinetic energy only in elastic collisions; momentum conserved if isolated.,Distinguishes total vs kinetic energy
+18,edge,Mechanics,"A 5.0 kg box sits on a 30° incline with μs = 0.70. Does it slide, and what is the friction force on it?","tan 30° = 0.58 < 0.70 so it stays put; static friction equals mg sin θ, not μs·N.",Does not slide; f_s = 24.5 N
+19,edge,Mechanics,A car goes around a curve at a constant 25 m/s. Is it accelerating?,Yes: centripetal acceleration v^2/r toward the center even at constant speed; radius needed for a value.,Yes (direction changes)
+20,edge,Mechanics,A spring with k = 200 N/m is compressed 10 cm and launches a 500 g block on a frictionless surface. How fast does the block leave?,Converts 10 cm -> 0.10 m and 500 g -> 0.50 kg; (1/2)kx^2 = (1/2)mv^2.,v = 2.0 m/s
+21,edge,Mechanics,"Just the number, no explanation: momentum of a 3 kg ball moving at 4 m/s.",Gives the short answer as asked.,12 kg·m/s
+22,unreliable,Out of scope,What is the maximum efficiency of a heat engine running between 500 K and 300 K?,"Thermodynamics is outside the course notes. RAG config should say the notes do not cover it; any answer (40%, Carnot) must be labelled as outside the material.",Flags out of scope (general answer 40%)
+23,unreliable,Out of scope,What's going to be on my physics midterm next week?,Says it cannot know; offers to help review topics.,Cannot know; offers study help
+24,unreliable,Out of scope,Derive the speed of sound in air.,Waves and sound are not in the course notes; flags scope.,Flags out of scope
+25,unreliable,Mechanics,What did end-of-chapter Problem 47 in the Linear Momentum chapter ask?,End-of-section problems were removed from the corpus; says it cannot see the problem and asks the student to paste it. Must not invent a problem.,Admits it cannot see the problem

@@ -1,0 +1,10 @@
+# Optional dependencies for the Tutor lab page (open-weight models and dense retrieval).
+# The chat, compare, evaluation, and PhysicsSLM pages do not need this file.
+# Install with:  .venv\Scripts\python.exe -m pip install -r requirements-lab.txt
+torch
+transformers>=4.44
+accelerate
+sentence-transformers>=3.0
+
+# 8-bit and 4-bit also need an NVIDIA GPU. Install bitsandbytes only in that case:
+#   .venv\Scripts\python.exe -m pip install bitsandbytes

@@ -1,0 +1,49 @@
+id,kind,prefix,options,answer
+H01,fact,force equals mass times,acceleration|velocity|time|height,acceleration
+H02,fact,momentum equals mass times,velocity|acceleration|height|time,velocity
+H03,fact,weight equals mass times gravitational,acceleration|energy|force|velocity,acceleration
+H04,fact,force is measured in,newtons|joules|meters|kilograms,newtons
+H05,fact,energy is measured in,joules|newtons|seconds|kilograms,joules
+H06,fact,mass is measured in,kilograms|joules|newtons|meters,kilograms
+H07,fact,time is measured in,seconds|meters|joules|newtons,seconds
+H08,fact,distance is measured in,meters|seconds|kilograms|joules,meters
+H09,fact,speed equals distance divided by,time|mass|force|height,time
+H10,fact,acceleration equals net force divided by,mass|time|speed|height,mass
+H11,fact,impulse equals change in,momentum|energy|height|mass,momentum
+H12,fact,potential energy increases with,height|speed|friction|time,height
+H13,fact,constant velocity means zero,acceleration|mass|height|energy,acceleration
+H14,fact,newton third law describes equal and opposite,forces|energy|mass|velocity,forces
+H15,fact,kinetic energy equals one half mass times speed,squared|divided|doubles|half,squared
+H16,fact,total momentum is conserved in an isolated,system|ramp|floor|ball,system
+H17,fact,work equals force times,displacement|mass|velocity|time,displacement
+H18,fact,impulse equals average force times,time|mass|distance|height,time
+H19,relation,greater mass causes,smaller acceleration|greater acceleration,smaller acceleration
+H20,relation,greater net force causes,greater acceleration|smaller acceleration,greater acceleration
+H21,relation,if net force stays constant and mass doubles acceleration becomes,half|four times greater|zero,half
+H22,relation,if speed doubles kinetic energy becomes,four times greater|half|zero,four times greater
+H23,relation,negative work can,decrease kinetic energy|increase kinetic energy,decrease kinetic energy
+H24,relation,positive work can,increase kinetic energy|decrease kinetic energy,increase kinetic energy
+H25,relation,the box slows when,friction acts|gravity pulls the box downward|mass stays constant,friction acts
+H26,relation,the car gains kinetic energy when speed,increases|decreases,increases
+H27,relation,the cart loses kinetic energy when speed,decreases|increases,decreases
+H28,relation,speed does not include,direction|mass|time,direction
+H29,relation,balanced forces produce zero net,force|energy|mass|height,force
+H30,relation,unbalanced forces can change,velocity|mass|height|distance,velocity
+H31,novel,when net force is zero the acceleration is,zero|greater|four|half,zero
+H32,novel,with fixed net force a larger mass produces less,acceleration|energy|height|time,acceleration
+H33,novel,a larger net force produces more,acceleration|mass|height|time,acceleration
+H34,novel,kinetic energy grows when an object moves,faster|downward|along|slows,faster
+H35,novel,friction converts some mechanical energy into,thermal energy|kinetic energy|potential energy|gravitational energy,thermal energy
+H36,novel,when forces balance the acceleration is,zero|four|half|greater,zero
+H37,novel,force is the product of mass and,acceleration|velocity|height|time,acceleration
+H38,novel,momentum is the product of mass and,velocity|acceleration|height|time,velocity
+H39,novel,as the ball falls gravity converts potential energy into,kinetic energy|thermal energy|mechanical energy|gravitational energy,kinetic energy
+H40,novel,the sled moves with constant velocity when the net force is,zero|greater|four|half,zero
+H41,novel,if the net force on the block doubles and the mass stays constant the acceleration,doubles|decreases|remains constant,doubles
+H42,novel,if the mass of the car doubles and the net force stays constant the acceleration becomes,half|four times greater|greater,half
+H43,novel,the momentum of a cart depends on mass and,velocity|height|friction|time,velocity
+H44,novel,the potential energy of the ball increases with,height|speed|friction|time,height
+H45,novel,the energy of an isolated system remains,constant|zero|half|greater,constant
+H46,novel,when speed decreases the box loses,kinetic energy|potential energy|thermal energy|gravitational energy,kinetic energy
+H47,novel,friction acts on the sled and the sled,slows|accelerates|falls|gains kinetic energy,slows
+H48,novel,an object at constant velocity is at zero,acceleration|mass|speed|energy,acceleration

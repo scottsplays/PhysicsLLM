@@ -1,0 +1,458 @@
+{
+ "name": "v2",
+ "seed": 0,
+ "config": {
+  "n_embed": 32,
+  "num_heads": 4,
+  "n_blocks": 3,
+  "block_size": 16,
+  "lr": 0.05,
+  "seed": 0
+ },
+ "steps": 3000,
+ "parameters": 34048,
+ "tokens": 14998,
+ "sentences_kept": 1784,
+ "unique_sentences": 136,
+ "sentences_dropped": 0,
+ "dropped_examples": [],
+ "curve": [
+  {
+   "step": 0,
+   "choice_acc": 0.3958333333333333,
+   "chance": 0.2916666666666667,
+   "top1_acc": 0.02564102564102564,
+   "acc_fact": 0.4444444444444444,
+   "acc_novel": 0.2222222222222222,
+   "acc_relation": 0.5833333333333334,
+   "train_loss": null
+  },
+  {
+   "step": 500,
+   "choice_acc": 0.3958333333333333,
+   "chance": 0.2916666666666667,
+   "top1_acc": 0.0,
+   "acc_fact": 0.2222222222222222,
+   "acc_novel": 0.5555555555555556,
+   "acc_relation": 0.4166666666666667,
+   "train_loss": 3.7531639129176857
+  },
+  {
+   "step": 1000,
+   "choice_acc": 0.3541666666666667,
+   "chance": 0.2916666666666667,
+   "top1_acc": 0.05128205128205128,
+   "acc_fact": 0.2222222222222222,
+   "acc_novel": 0.4444444444444444,
+   "acc_relation": 0.4166666666666667,
+   "train_loss": 2.860430078493504
+  },
+  {
+   "step": 2000,
+   "choice_acc": 0.5208333333333334,
+   "chance": 0.2916666666666667,
+   "top1_acc": 0.3076923076923077,
+   "acc_fact": 0.5555555555555556,
+   "acc_novel": 0.5,
+   "acc_relation": 0.5,
+   "train_loss": 1.7902499851739437
+  },
+  {
+   "step": 3000,
+   "choice_acc": 0.6666666666666666,
+   "chance": 0.2916666666666667,
+   "top1_acc": 0.48717948717948717,
+   "acc_fact": 0.7777777777777778,
+   "acc_novel": 0.5555555555555556,
+   "acc_relation": 0.6666666666666666,
+   "train_loss": 1.2527855662973666
+  }
+ ],
+ "final_probes": [
+  {
+   "id": "H01",
+   "kind": "fact",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H02",
+   "kind": "fact",
+   "pick": "velocity",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H03",
+   "kind": "fact",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H04",
+   "kind": "fact",
+   "pick": "meters",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H05",
+   "kind": "fact",
+   "pick": "joules",
+   "correct": true,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H06",
+   "kind": "fact",
+   "pick": "meters",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H07",
+   "kind": "fact",
+   "pick": "meters",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H08",
+   "kind": "fact",
+   "pick": "meters",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H09",
+   "kind": "fact",
+   "pick": "time",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H10",
+   "kind": "fact",
+   "pick": "mass",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H11",
+   "kind": "fact",
+   "pick": "momentum",
+   "correct": true,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H12",
+   "kind": "fact",
+   "pick": "height",
+   "correct": true,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H13",
+   "kind": "fact",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H14",
+   "kind": "fact",
+   "pick": "forces",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H15",
+   "kind": "fact",
+   "pick": "squared",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H16",
+   "kind": "fact",
+   "pick": "system",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H17",
+   "kind": "fact",
+   "pick": "time",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H18",
+   "kind": "fact",
+   "pick": "time",
+   "correct": true,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H19",
+   "kind": "relation",
+   "pick": "greater acceleration",
+   "correct": false,
+   "top1": null,
+   "chance": 0.5
+  },
+  {
+   "id": "H20",
+   "kind": "relation",
+   "pick": "greater acceleration",
+   "correct": true,
+   "top1": null,
+   "chance": 0.5
+  },
+  {
+   "id": "H21",
+   "kind": "relation",
+   "pick": "half",
+   "correct": true,
+   "top1": true,
+   "chance": 0.3333333333333333
+  },
+  {
+   "id": "H22",
+   "kind": "relation",
+   "pick": "four times greater",
+   "correct": true,
+   "top1": null,
+   "chance": 0.3333333333333333
+  },
+  {
+   "id": "H23",
+   "kind": "relation",
+   "pick": "increase kinetic energy",
+   "correct": false,
+   "top1": null,
+   "chance": 0.5
+  },
+  {
+   "id": "H24",
+   "kind": "relation",
+   "pick": "decrease kinetic energy",
+   "correct": false,
+   "top1": null,
+   "chance": 0.5
+  },
+  {
+   "id": "H25",
+   "kind": "relation",
+   "pick": "friction acts",
+   "correct": true,
+   "top1": null,
+   "chance": 0.3333333333333333
+  },
+  {
+   "id": "H26",
+   "kind": "relation",
+   "pick": "increases",
+   "correct": true,
+   "top1": true,
+   "chance": 0.5
+  },
+  {
+   "id": "H27",
+   "kind": "relation",
+   "pick": "increases",
+   "correct": false,
+   "top1": false,
+   "chance": 0.5
+  },
+  {
+   "id": "H28",
+   "kind": "relation",
+   "pick": "direction",
+   "correct": true,
+   "top1": true,
+   "chance": 0.3333333333333333
+  },
+  {
+   "id": "H29",
+   "kind": "relation",
+   "pick": "force",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H30",
+   "kind": "relation",
+   "pick": "velocity",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H31",
+   "kind": "novel",
+   "pick": "half",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H32",
+   "kind": "novel",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H33",
+   "kind": "novel",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H34",
+   "kind": "novel",
+   "pick": "along",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H35",
+   "kind": "novel",
+   "pick": "thermal energy",
+   "correct": true,
+   "top1": null,
+   "chance": 0.25
+  },
+  {
+   "id": "H36",
+   "kind": "novel",
+   "pick": "half",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H37",
+   "kind": "novel",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H38",
+   "kind": "novel",
+   "pick": "acceleration",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H39",
+   "kind": "novel",
+   "pick": "kinetic energy",
+   "correct": true,
+   "top1": null,
+   "chance": 0.25
+  },
+  {
+   "id": "H40",
+   "kind": "novel",
+   "pick": "half",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H41",
+   "kind": "novel",
+   "pick": "doubles",
+   "correct": true,
+   "top1": false,
+   "chance": 0.3333333333333333
+  },
+  {
+   "id": "H42",
+   "kind": "novel",
+   "pick": "half",
+   "correct": true,
+   "top1": true,
+   "chance": 0.3333333333333333
+  },
+  {
+   "id": "H43",
+   "kind": "novel",
+   "pick": "time",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H44",
+   "kind": "novel",
+   "pick": "speed",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H45",
+   "kind": "novel",
+   "pick": "constant",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  },
+  {
+   "id": "H46",
+   "kind": "novel",
+   "pick": "kinetic energy",
+   "correct": true,
+   "top1": null,
+   "chance": 0.25
+  },
+  {
+   "id": "H47",
+   "kind": "novel",
+   "pick": "gains kinetic energy",
+   "correct": false,
+   "top1": false,
+   "chance": 0.25
+  },
+  {
+   "id": "H48",
+   "kind": "novel",
+   "pick": "acceleration",
+   "correct": true,
+   "top1": true,
+   "chance": 0.25
+  }
+ ],
+ "seconds": 763.8364858627319
+}

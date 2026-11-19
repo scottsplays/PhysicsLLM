@@ -1,0 +1,14 @@
+config,model,rag,n,correct,accuracy,ci95_low,ci95_high,unparsed,mean_seconds,acc_Mechanics,acc_E&M
+GPT-5.4 mini (OpenAI) | RAG off,gpt-5.4-mini,off,117,117,1.0,0.968,1.0,0,2.16,1.0,1.0
+GPT-5.4 mini (OpenAI) | RAG on,gpt-5.4-mini,on,117,117,1.0,0.968,1.0,0,2.55,1.0,1.0
+Gemini 3.8 Flash (Google) | RAG off,gemini-3.8-flash,off,1,1,1.0,0.207,1.0,0,65.62,1.0,
+Gemini 3.8 Flash (Google) | RAG on,gemini-3.8-flash,on,5,5,1.0,0.566,1.0,0,41.5,1.0,
+Gemma 4 26B-A4B (open weights) | RAG off,gemma-4-26b-a4b-it,off,112,65,0.58,0.488,0.668,47,39.08,0.59,0.552
+Gemma 4 26B-A4B (open weights) | RAG on,gemma-4-26b-a4b-it,on,112,43,0.384,0.299,0.476,69,39.47,0.386,0.379
+"Llama 3.2 1B (open, local) | RAG off",llama3.2-1b,off,117,25,0.214,0.149,0.296,27,14.79,0.209,0.226
+"Llama 3.2 1B (open, local) | RAG on",llama3.2-1b,on,117,29,0.248,0.178,0.333,5,14.79,0.314,0.065
+PhysicsSLM (from scratch),physics-slm,off,117,28,0.239,0.171,0.324,0,0.0,0.279,0.129
+"Qwen 2.5 0.5B (open, local) | RAG off",qwen2.5-0.5b,off,117,30,0.256,0.186,0.342,9,12.91,0.267,0.226
+"Qwen 2.5 0.5B (open, local) | RAG on",qwen2.5-0.5b,on,117,19,0.162,0.106,0.24,41,12.37,0.151,0.194
+"Qwen 2.5 1.5B (open, local) | RAG off",qwen2.5-1.5b,off,117,54,0.462,0.374,0.552,4,20.87,0.442,0.516
+"Qwen 2.5 1.5B (open, local) | RAG on",qwen2.5-1.5b,on,117,46,0.393,0.309,0.484,18,22.55,0.395,0.387
